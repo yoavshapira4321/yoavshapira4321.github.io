@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שיעורים פרטיים במתמטיקה ופיזיקה - יואב</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* עיצוב כללי */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            direction: rtl;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* עיצוב כותרת עליונה */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><text x="50%" y="50%" font-size="20" text-anchor="middle" dominant-baseline="middle" fill="white">∑ ∫ π</text></svg>');
+            opacity: 0.1;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        /* עיצוב סעיפים */
+        section {
+            padding: 3rem 0;
+            background: white;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        h3 {
+            color: #3498db;
+            margin: 1.2rem 0 0.7rem;
+        }
+        
+        /* עיצוב רשימות */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: "✔";
+            color: #27ae60;
+            position: absolute;
+            right: 0;
+        }
+        
+        /* עיצוב כרטיסי מחירים */
+        .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-top: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+        
+        /* עיצוב כפתור צור קשר */
+        .contact-btn {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .contact-btn:hover {
+            background: #219653;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(39, 174, 96, 0.4);
+        }
+        
+        /* עיצוב אזור יצירת קשר */
+        .contact-info {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .phone-number {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            direction: ltr;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .phone-number:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* עיצוב רספונסיבי */
+        @media (max-width: 768px) {
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                width: 100%;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* אנימציות קלות */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* הודעת אישור העתקה */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(39, 174, 96, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+        
+        .copy-notification.show {
+            opacity: 1;
+        }
+        
+        /* עיצוב כפתור ההעתקה */
+        .copy-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        /* עיצוב תגי נושא */
+        .subject-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .subject-tag {
+            background: #e8f4fc;
+            color: #3498db;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        /* עיצוב תמונת פרופיל */
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-icon {
+            width: 80px;
+            height: 80px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- הודעת אישור העתקה -->
+    <div class="copy-notification" id="copyNotification">
+        <i class="fas fa-check-circle"></i> המספר הועתק ללוח!
+    </div>
+    
+    <header>
+        <div class="container">
+            <h1>שיעורים פרטיים במתמטיקה ופיזיקה</h1>
+            <p>הרצליה והסביבה - יואב</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section id="about">
+            <div class="profile">
+                <div class="profile-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div>
+                    <h2>מורה צעיר ואנרגטי עם רקע חזק ב:</h2>
+                </div>
+            </div>
+            
+            <ul>
+                <li><strong>מתמטיקה (3-4 יח"ל)</strong> - שיפור ציונים, הכנה למבחנים ותרגול חווייתי</li>
+                <li><strong>פיזיקה (3-5 יח"ל)</strong> - הסברים ברורים ופתרון בעיות step-by-step</li>
+                <li><strong>מחשבים וסייבר</strong> - יסודות התכנות, רשתות או הכנה לבגרות (5 יח"ל)</li>
+            </ul>
+            
+            <div class="subject-tags">
+                <span class="subject-tag">בגרות</span>
+                <span class="subject-tag">הכנה למבחנים</span>
+                <span class="subject-tag">הנדסאים</span>
+                <span class="subject-tag">שיפור ציונים</span>
+            </div>
+        </section>
+        
+        <section id="offers">
+            <h2>מה אני מציע?</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <i class="fas fa-home fa-2x" style="color: #3498db;"></i>
+                    <h3>שיעור בבית התלמיד</h3>
+                    <div class="price">100 ₪ לשיעור 60 דק'</div>
+                    <p>אני מגיע אליך בהרצליה</p>
+                </div>
+                
+                <div class="pricing-card">
+                    <i class="fas fa-map-marker-alt fa-2x" style="color: #3498db;"></i>
+                    <h3>שיעור בביתי</h3>
+                    <div class="price">80 ₪ לשיעור 60 דק'</div>
+                    <p>מיקום מרכזי בהרצליה (נווה עמל)</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p><i class="fas fa-clock" style="color: #3498db;"></i> גמישות בשעות - מתאים לתלמידי תיכון או הנדסאים</p>
+                <p><i class="fas fa-user-graduate" style="color: #3498db;"></i> יחס אישי וליווי צמוד עד להצלחה!</p>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>ליצירת קשר</h2>
+            <div class="contact-info">
+                <p>מוזמנים לשאול ולהתייעץ ללא התחייבות!</p>
+                <div class="phone-number" id="phoneNumber">
+                    <button class="copy-btn" onclick="copyPhoneNumber()">
+                        <i class="far fa-copy"></i>
+                    </button>
+                    058-7862927
+                </div>
+                <p>יואב</p>
+                <button class="contact-btn" onclick="copyPhoneNumber()">
+                    <i class="fas fa-phone-alt"></i> העתק מספר והתקשרו עכשיו
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = '0587862927';
+            
+            // יצירת אלמנט textarea זמני להעתקה
+            const textArea = document.createElement('textarea');
+            textArea.value = phoneNumber;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                // ניסיון להעתקה באמצעות Clipboard API
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showNotification();
+                }
+            } catch (err) {
+                console.error('Unable to copy text: ', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        function showNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            
+            // הסתרת ההודעה לאחר 3 שניות
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // הוספת מאזין אירוע ללחיצה על מספר הטלפון
+        document.getElementById('phoneNumber').addEventListener('click', copyPhoneNumber);
+    </script>
+</body>
+</html>
