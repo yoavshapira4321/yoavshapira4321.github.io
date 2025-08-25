@@ -13,11 +13,22 @@
             padding: 0;
         }
         
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #27ae60;
+            --light-bg: #f5f7fa;
+            --dark-text: #333;
+            --light-text: #fff;
+            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --header-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: var(--dark-text);
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e4efe9 100%);
             direction: rtl;
             min-height: 100vh;
         }
@@ -25,16 +36,16 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1rem;
         }
         
         /* עיצוב כותרת עליונה */
         header {
-            background: linear-gradient(135deg, #2c3e50, #4a6491);
-            color: white;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-color), #4a6491);
+            color: var(--light-text);
+            padding: 1.5rem 0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--header-shadow);
             position: relative;
             overflow: hidden;
         }
@@ -51,20 +62,20 @@
         }
         
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
             position: relative;
         }
         
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
             position: relative;
         }
         
         /* עיצוב סעיפים */
         section {
-            padding: 3rem;
+            padding: 2rem 1rem;
             background: white;
             margin: 1.5rem 0;
             border-radius: 10px;
@@ -77,15 +88,16 @@
         }
         
         h2 {
-            color: #2c3e50;
+            color: var(--primary-color);
             margin-bottom: 1.5rem;
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
         
         h3 {
-            color: #3498db;
+            color: var(--secondary-color);
             margin: 1.2rem 0 0.7rem;
+            font-size: 1.3rem;
         }
         
         /* עיצוב רשימות */
@@ -98,11 +110,12 @@
             margin-bottom: 0.8rem;
             padding-right: 1.5rem;
             position: relative;
+            font-size: 1.05rem;
         }
         
         li:before {
             content: "✔";
-            color: #27ae60;
+            color: var(--accent-color);
             position: absolute;
             right: 0;
         }
@@ -123,9 +136,9 @@
             flex: 1;
             min-width: 250px;
             max-width: 350px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--card-shadow);
             text-align: center;
-            border-top: 4px solid #3498db;
+            border-top: 4px solid var(--secondary-color);
             transition: transform 0.3s ease;
         }
         
@@ -134,8 +147,8 @@
         }
         
         .price {
-            font-size: 2rem;
-            color: #2c3e50;
+            font-size: 1.8rem;
+            color: var(--primary-color);
             margin: 1rem 0;
             font-weight: bold;
         }
@@ -143,8 +156,8 @@
         /* עיצוב כפתור צור קשר */
         .contact-btn {
             display: inline-block;
-            background: #27ae60;
-            color: white;
+            background: var(--accent-color);
+            color: var(--light-text);
             padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 50px;
@@ -167,13 +180,13 @@
         .contact-info {
             text-align: center;
             padding: 2rem;
-            background: #2c3e50;
-            color: white;
+            background: var(--primary-color);
+            color: var(--light-text);
             border-radius: 10px;
         }
         
         .phone-number {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin: 1rem 0;
             direction: ltr;
             display: inline-block;
@@ -197,10 +210,71 @@
             
             .pricing-card {
                 width: 100%;
+                max-width: 100%;
             }
             
             header h1 {
-                font-size: 2rem;
+                font-size: 1.7rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            section {
+                padding: 1.5rem 1rem;
+                margin: 1rem 0;
+            }
+            
+            .contact-info {
+                padding: 1.5rem;
+            }
+            
+            .phone-number {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            li {
+                font-size: 1rem;
+            }
+            
+            .price {
+                font-size: 1.5rem;
+            }
+            
+            .contact-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .profile {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .profile-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.7rem;
             }
         }
         
@@ -228,6 +302,7 @@
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 1000;
+            font-size: 0.9rem;
         }
         
         .copy-notification.show {
@@ -241,6 +316,7 @@
             color: white;
             cursor: pointer;
             margin-right: 5px;
+            font-size: 1rem;
         }
         
         /* עיצוב תגי נושא */
@@ -254,10 +330,11 @@
         
         .subject-tag {
             background: #e8f4fc;
-            color: #3498db;
-            padding: 5px 15px;
+            color: var(--secondary-color);
+            padding: 5px 12px;
             border-radius: 20px;
             font-weight: 500;
+            font-size: 0.9rem;
         }
         
         /* עיצוב תמונת פרופיל */
@@ -272,13 +349,45 @@
         .profile-icon {
             width: 80px;
             height: 80px;
-            background: #3498db;
+            background: var(--secondary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 2rem;
+        }
+        
+        /* שיפור כללי לרספונסיביות */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* תפריט נגישות למובייל */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        /* שיפור נראות הטקסט במובייל */
+        @media (max-width: 480px) {
+            body {
+                font-size: 16px; /* מונע זום אוטומטי באייפון */
+            }
         }
     </style>
 </head>
@@ -289,6 +398,9 @@
     </div>
     
     <header>
+        <button class="mobile-menu-btn" aria-label="תפריט">
+            <i class="fas fa-bars"></i>
+        </button>
         <div class="container">
             <h1>שיעורים פרטיים במתמטיקה ופיזיקה</h1>
             <p>הרצליה והסביבה - יואב</p>
@@ -399,7 +511,11 @@
         
         // הוספת מאזין אירוע ללחיצה על מספר הטלפון
         document.getElementById('phoneNumber').addEventListener('click', copyPhoneNumber);
+        
+        // הוספת תפריט מובייל (לדוגמה - ניתן להרחיב)
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            alert('בעתיד כאן יופיע תפריט ניווט');
+        });
     </script>
 </body>
 </html>
-
